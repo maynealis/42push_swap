@@ -71,6 +71,7 @@ char	print_error_message_and_clean(t_stack **stack_a, t_stack **stack_b)
 void	turk_algorithm(t_stack **stack_a, t_stack **stack_b)
 {
 	t_seq	seq;
+	t_seq	opt;
 	int		l;
 	int		f;
 
@@ -81,17 +82,17 @@ void	turk_algorithm(t_stack **stack_a, t_stack **stack_b)
 	while (ft_stacksize(*stack_a) > 3)
 	{
 		seq = get_best_move(*stack_a, *stack_b);
-		seq = opt_seq(seq);
+		opt = opt_seq(seq);
 		//ft_printf("Size of a: %i\t Size of b: %i\n", ft_stacksize(*stack_a), ft_stacksize(*stack_b));
 		//ft_printf("Number of moves: %i\n", seq.moves);
 		//ft_printf("Number to move: %i\n", seq.number);
-		apply_seq(stack_a, stack_b, seq);
+		apply_seq(stack_a, stack_b, opt);
 		//print_stacks(*stack_a, *stack_b);
 		//ft_printf("Number that I moved %i\n", (*stack_b)->num);
 	}
 	sort_three_asc(stack_a, 'a');
 	//get_min_on_top(stack_a, 'a');
-	print_stacks(*stack_a, *stack_b);
+	//print_stacks(*stack_a, *stack_b);
 	while (*stack_b)
 	{
 		l = (*stack_a)->prev->num;

@@ -35,13 +35,13 @@ all: $(NAME)
 %.o: %.c $(INCLUDES) $(LIBFT)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(LIBFT) $(PRINTF) $(OBJS) Makefile
+$(NAME): libft printf $(OBJS) Makefile
 	$(CC) $(CFLAGS) $(OBJS)  $(LIBFT) $(PRINTF) -o $(NAME)
 
-$(LIBFT):
+libft:
 	$(MAKE) bonus -C $(LIBFT_DIR)
 	
-$(PRINTF):
+printf:
 	$(MAKE) bonus -C $(PRINTF_DIR)
 
 clean:
@@ -57,4 +57,4 @@ re: fclean all
 norm:
 	norminette $(SRCS) $(LIBFT_DIR) $(INCLUDES) $(SRCS_BONUS)
 
-.PHONY: all clean fclean re norm bonus bonus_clean
+.PHONY: all clean fclean re norm bonus bonus_clean libft printf
