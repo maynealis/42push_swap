@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:04:48 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/12 16:43:48 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/14 17:26:23 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_seq
 	int	sa;
 	int	sb;
 	int	ss;
-	int	number;
 }	t_seq;
 
 
@@ -60,9 +59,12 @@ void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
 void	swap(t_stack **stack);
 void	push_print(t_stack **src, t_stack **dst, char letter);
+void	push_n_print(int n, t_stack **src, t_stack **dst, char letter);
 void	rotate_print(t_stack **stack, char letter);
 void	reverse_rotate_print(t_stack **stack, char letter);
 void	swap_print(t_stack **stack, char letter);
+void	rotate_both_print(t_stack **stack_a, t_stack **stack_b);
+void	reverse_rotate_both_print(t_stack **stack_a, t_stack **stack_b);
 
 // Stack utils
 

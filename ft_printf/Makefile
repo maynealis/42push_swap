@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/12 19:09:37 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/01/27 20:51:10 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/02/14 18:06:10 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,14 +27,14 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-%.o: %.c $(INCLUDES) $(LIBFT)
+%.o: %.c $(INCLUDES) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): libft $(OBJS) Makefile
-# cp $(LIBFT) $(NAME)
+$(NAME): $(LIBFT) $(OBJS) Makefile
+	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJS)
 
-libft:
+$(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
@@ -59,6 +59,7 @@ bonus: $(OBJS_BONUS) $(LIBFT) Makefile
 
 bonus_clean:
 	rm -rf $(OBJS_BONUS)
+	rm -f .bonus
 # --------------------------------------------
 
 

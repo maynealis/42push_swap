@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:43:27 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/12 17:08:02 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/14 16:29:38 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,15 @@
 int	moves_with_r(int n, t_stack *stack)
 {
 	int	size;
-	int	i;
+	int	max;
 	int	moves;
 	int	last;
 	int	first;
 
-	i = 0;
 	size = ft_stacksize(stack);
-	int	max = get_max_num(stack);
+	max = get_max_num(stack);
 	moves = 0;
-	while (i < size)
+	while (moves < size)
 	{
 		last = stack->prev->num;
 		first = stack->num;
@@ -33,12 +32,8 @@ int	moves_with_r(int n, t_stack *stack)
 			break ;
 		else if (n > first && n < last)
 			break ;
-		else
-		{
-			rotate(&stack);
-			moves++;
-		}
-		i++;
+		rotate(&stack);
+		moves++;
 	}
 	return (moves);
 }
@@ -46,16 +41,15 @@ int	moves_with_r(int n, t_stack *stack)
 int	moves_with_rr(int n, t_stack *stack)
 {
 	int	size;
-	int	i;
+	int	max;
 	int	moves;
 	int	last;
 	int	first;
 
-	i = 0;
 	size = ft_stacksize(stack);
-	int	max = get_max_num(stack);
+	max = get_max_num(stack);
 	moves = 0;
-	while (i < size)
+	while (moves < size)
 	{
 		last = stack->prev->num;
 		first = stack->num;
@@ -63,12 +57,8 @@ int	moves_with_rr(int n, t_stack *stack)
 			break ;
 		else if (n > first && n < last)
 			break ;
-		else
-		{
-			reverse_rotate(&stack);
-			moves++;
-		}
-		i++;
+		reverse_rotate(&stack);
+		moves++;
 	}
 	return (moves);
 }

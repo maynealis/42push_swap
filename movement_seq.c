@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:14:16 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/09 17:29:42 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/14 16:41:14 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,22 @@ t_seq	init_seq(void)
 	seq.sa = 0;
 	seq.sb = 0;
 	seq.ss = 0;
-	seq.number = 0;
 	return (seq);
 }
 
 t_seq	opt_seq(t_seq seq)
 {
-	if (seq.rb > 0 && seq.ra > 0)
+	while (seq.ra > 0 && seq.rb > 0)
 	{
-		while (seq.ra > 0 && seq.rb > 0)
-		{
-			seq.rr ++;
-			seq.ra--;
-			seq.rb--;
-		}
+		seq.rr ++;
+		seq.ra--;
+		seq.rb--;
 	}
-	if (seq.rrb > 0 && seq.rra > 0) //TODO if is not necessary
+	while (seq.rra > 0 && seq.rrb > 0)
 	{
-		while (seq.rra > 0 && seq.rrb > 0)
-		{
-			seq.rrr++;
-			seq.rra--;
-			seq.rrb--;
-		}
+		seq.rrr++;
+		seq.rra--;
+		seq.rrb--;
 	}
 	return (seq);
 }
@@ -59,17 +52,9 @@ t_seq	opt_seq(t_seq seq)
 void	apply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move)
 {
 	while (best_move.rrr-- > 0)
-	{
-		reverse_rotate(stack_a);
-		reverse_rotate(stack_b);
-		ft_printf("rrr\n");
-	}
+		reverse_rotate_both_print(stack_a, stack_b);
 	while (best_move.rr-- > 0)
-	{
-		rotate(stack_a);
-		rotate(stack_b);
-		ft_printf("rr\n");
-	}
+		rotate_both_print(stack_a, stack_b);
 	while (best_move.ra-- > 0)
 		rotate_print(stack_a, 'a');
 	while (best_move.rb-- > 0)
@@ -86,37 +71,4 @@ void	apply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move)
 		push_print(stack_b, stack_a, 'a');
 	if (best_move.pb)
 		push_print(stack_a, stack_b, 'b');
-}
-
-void	aply_seq_no_print(t_stack **stack_a, t_stack **stack_b, t_seq best_move)
-{
-	//int	i;
-	while (best_move.rrr-- > 0)
-	{
-		reverse_rotate(stack_a);
-		reverse_rotate(stack_b);
-		//ft_printf("rrr\n");
-	}
-	while (best_move.rr-- > 0)
-	{
-		rotate(stack_a);
-		rotate(stack_b);
-		//ft_printf("rr\n");
-	}
-	while (best_move.ra-- > 0)
-		rotate(stack_a);
-	while (best_move.rb-- > 0)
-		rotate(stack_b);
-	while (best_move.rra-- > 0)
-		reverse_rotate(stack_a);
-	while (best_move.rrb-- > 0)
-		reverse_rotate(stack_b);
-	if (best_move.sa)
-		swap(stack_a);
-	if (best_move.sb)
-		swap(stack_b);
-	if (best_move.pa)
-		push(stack_b, stack_a);
-	if (best_move.pb)
-		push(stack_a, stack_b);
 }

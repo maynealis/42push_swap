@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:42:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/12 17:08:47 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/14 17:10:41 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ void	turk_algorithm(t_stack **stack_a, t_stack **stack_b)
 	{
 		l = (*stack_a)->prev->num;
 		f = (*stack_a)->num;
-		if ((l < f && (*stack_b)->num < f && (*stack_b)->num > l)
-		|| (l > f && ((*stack_b)->num < f || (*stack_b)->num > l)))
+		if ((l <= f && (*stack_b)->num < f && (*stack_b)->num > l)
+		|| (l >= f && ((*stack_b)->num < f || (*stack_b)->num > l)))
 			push_print(stack_b, stack_a, 'a');
 		else
 			reverse_rotate_print(stack_a, 'a');
@@ -130,8 +130,8 @@ int	main(int argc, char **argv)
 		sort_three_asc(&stack_a, 'a'); //TODO check for fewer than 3
 		get_min_on_top(&stack_a, 'a');
 	}
-	else if (ft_stacksize(stack_a) < 6)
-		sort_three_asc(&stack_a, 'a');//TODO for 5 numb
+	//else if (ft_stacksize(stack_a) < 6)
+	//	sort_three_asc(&stack_a, 'a');//TODO for 5 numb
 	else
 		turk_algorithm(&stack_a, &stack_b);
 	ft_stackfree(&stack_a);
