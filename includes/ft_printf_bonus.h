@@ -16,9 +16,6 @@
 # include <stdarg.h> // to use: va_start, va_arg, va_copy, va_end
 # include <stddef.h> // to use: size_t
 
-//# include "flags_manager_bonus.h" // for the struct
-//# include "write_types_bonus.h"
-
 # include "libft.h"
 
 # define CONVERSIONS "cspdiuxX%"
@@ -56,11 +53,11 @@ char	*parse_hexa(char *num, unsigned long n, char type, t_flags flags);
 # define FT_BASE_HEXA_MAY "0123456789ABCDEF"
 # define FT_BASE_DECIMAL "0123456789"
 
-int	write_char(char c, t_flags flags);
-int	write_str(char *str, t_flags flags);
-int	write_int(int n, t_flags flags);
-int	write_uint(unsigned int n, t_flags flags);
-int	write_hexa(unsigned long n, char type, t_flags flags);
+int		write_char(char c, t_flags flags);
+int		write_str(char *str, t_flags flags);
+int		write_int(int n, t_flags flags);
+int		write_uint(unsigned int n, t_flags flags);
+int		write_hexa(unsigned long n, char type, t_flags flags);
 
 int		ft_printf(char const *str, ...);
 

@@ -15,7 +15,7 @@
 
 void	sort_three_desc(t_stack **stack, char stack_letter)
 {
-	if (!is_reverse_sorted(*stack))	
+	if (!is_reverse_sorted(*stack))
 		swap_print(stack, stack_letter);
 }
 

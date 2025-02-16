@@ -15,7 +15,6 @@
 
 # include <stdarg.h> // to use: va_start, va_arg, va_copy, va_end
 # include <stddef.h> // to use: size_t
-//# include "write_types.h"
 
 # include "libft.h"
 # include <unistd.h>
@@ -29,6 +28,6 @@ int		write_str(char *str);
 int		write_int(int n);
 int		write_uint(unsigned int n);
 int		write_hexa(unsigned long n, char x, char *prefix);
-int	ft_printf(char const *str, ...);
+int		ft_printf(char const *str, ...);
 
 #endif
