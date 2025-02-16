@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 18:26:37 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/02/14 18:14:55 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/02/16 15:39:20 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,17 @@ CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR) -g #TODO: quitar flag para entr
 LIBFT = $(LIBFT_DIR)/libft.a
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
-INCLUDES = $(INCLUDES_DIR)/libft.h $(INCLUDES_DIR)/ft_printf.h $(INCLUDES_DIR)/ft_printf_bonus.h
+INCLUDES = $(INCLUDES_DIR)/libft.h \
+			$(INCLUDES_DIR)/ft_printf.h \
+			$(INCLUDES_DIR)/ft_printf_bonus.h \
+			$(INCLUDES_DIR)/push_swap.h \
+			$(INCLUDES_DIR)/stack.h
 
-SRCS = turk_algorithm.c parse_arguments.c stack_manager.c stack_push_pop.c \
+SRCS = stack_manager.c stack_push_pop.c stack_min_max.c stack_check_sorted.c \
 		rule_push.c rule_swap.c rule_rotate.c rule_reverse_rotate.c \
-		stack_min_max.c stack_check_sorted.c sort.c \
-		calculate_moves.c best_move.c movement_seq.c
+		parse_arguments.c push_swap.c sort.c \
+		calculate_moves.c best_move.c sequence_manager.c turk_algorithm.c \
+		radix_algorithm.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
