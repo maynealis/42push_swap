@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 18:26:37 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/02/16 15:39:20 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/02/17 12:39:33 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,10 @@ PRINTF = $(PRINTF_DIR)/libftprintf.a
 INCLUDES = $(INCLUDES_DIR)/libft.h \
 			$(INCLUDES_DIR)/ft_printf.h \
 			$(INCLUDES_DIR)/ft_printf_bonus.h \
+			$(INCLUDES_DIR)/get_next_line.h \
 			$(INCLUDES_DIR)/push_swap.h \
 			$(INCLUDES_DIR)/stack.h
+
 
 SRCS = stack_manager.c stack_push_pop.c stack_min_max.c stack_check_sorted.c \
 		rule_push.c rule_swap.c rule_rotate.c rule_reverse_rotate.c \
@@ -35,13 +37,17 @@ SRCS = stack_manager.c stack_push_pop.c stack_min_max.c stack_check_sorted.c \
 		radix_algorithm.c
 OBJS = $(SRCS:.c=.o)
 
+GNL = gnl/get_next_line.c gnl/get_next_line_utils.c
+SRCS_BONUS = checker/checker.c $(GNL)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
 all: $(NAME)
 
 %.o: %.c $(INCLUDES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS) Makefile $(LIBFT) $(PRINTF)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) main.c $(LIBFT) $(PRINTF) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -51,6 +57,7 @@ $(PRINTF): $(LIBFT)
 
 clean:
 	rm -rf $(OBJS)
+	rm -rf $(OBJS_BONUS)
 	$(MAKE) clean -C $(LIBFT_DIR)
 	$(MAKE) clean -C $(PRINTF_DIR)
 
@@ -60,6 +67,9 @@ fclean: clean
 	$(MAKE) fclean -C $(PRINTF_DIR)
 
 re: fclean all
+
+bonus: $(OBJS) $(OBJS_BONUS) $(LIBFT) $(PRINTF)
+	$(CC) $(CFLAGS) $(OBJS) $(OBJS_BONUS) $(LIBFT) $(PRINTF) -o checker_mine
 
 norm:
 	norminette $(SRCS) $(LIBFT_DIR) $(INCLUDES) $(SRCS_BONUS)

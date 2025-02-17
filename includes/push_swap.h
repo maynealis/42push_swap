@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:04:48 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/16 15:43:35 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:32:36 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_seq
 
 // Functions to parse the arguments
 char	is_valid_argument(char *arg, t_stack *a);
+char	add_number(t_stack **a, int n);
+char	print_error_message_and_clean(t_stack **stack_a, t_stack **stack_b);
 
 // Rules
 void	push(t_stack **src, t_stack **dst);
@@ -57,6 +59,8 @@ void	sort_three_desc(t_stack **stack, char stack_letter);
 void	sort_three_asc(t_stack **stack, char stack_letter);
 void	sort_three(t_stack **stack, char stack_letter);
 
+
+
 // Algorithm turk
 int		moves_with_r(int n, t_stack *stack);
 int		moves_with_rr(int n, t_stack *stack);
@@ -65,6 +69,7 @@ t_seq	get_best_move(t_stack *stack_a, t_stack *stack_b);
 t_seq	init_seq(void);
 t_seq	opt_seq(t_seq seq);
 void	apply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move);
+void	turk_algorithm(t_stack **stack_a, t_stack **stack_b);
 
 // Radix
 void	radix_sort(t_stack **a, t_stack **b);

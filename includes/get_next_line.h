@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/16 15:19:55 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/17 12:38:48 by cmayne-p         ###   ########.fr       */
+/*   Created: 2025/01/05 17:26:12 by cmayne-p          #+#    #+#             */
+/*   Updated: 2025/01/06 13:39:37 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "stack.h"
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-char	add_number(t_stack **a, int n)
-{
-	t_stack	*new;
+# include <unistd.h>  // read
+# include <stdlib.h>  // malloc and free
+# include <stddef.h> // size_t
 
-	new = ft_stacknew(n);
-	if (new == NULL)
-	{
-		ft_stackfree(a);
-		return (0);
-	}
-	ft_stackadd_back(a, new);
-	return (1);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 8
+# endif
 
-char	print_error_message_and_clean(t_stack **stack_a, t_stack **stack_b)
-{
-	ft_putendl_fd("Error", 2);
-	ft_stackfree(stack_a);
-	ft_stackfree(stack_b);
-	return (1);
-}
+size_t	gnl_strlen(char *s);
+char	*gnl_strdup(char *s);
+char	*gnl_substr(char *s, size_t ini, size_t end);
+char	*gnl_strjoin(char *s1, char *s2);
+char	*get_next_line(int fd);
 
-
+#endif

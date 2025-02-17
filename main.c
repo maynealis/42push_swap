@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:42:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/14 17:10:41 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:38:47 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ft_printf_bonus.h"
 #include "push_swap.h"
 
+/*
 char	add_number(t_stack **a, int n)
 {
 	t_stack	*new;
@@ -105,6 +106,7 @@ void	turk_algorithm(t_stack **stack_a, t_stack **stack_b)
 	}
 	get_min_on_top(stack_a, 'a');
 }
+*/
 
 int	main(int argc, char **argv)
 {
@@ -121,17 +123,12 @@ int	main(int argc, char **argv)
 	{
 		if (!is_valid_argument(argv[i], stack_a))
 			return (print_error_message_and_clean(&stack_a, &stack_b));
-		if (!add_number(&stack_a, ft_atoi(argv[i]))) //ha fallado el anadir el numero al stack
+		if (!add_number(&stack_a, ft_atoi(argv[i])))
 			return (print_error_message_and_clean(&stack_a, &stack_b));
 		i++;
 	}
 	if (ft_stacksize(stack_a) <= 3)
-	{
-		sort_three_asc(&stack_a, 'a'); //TODO check for fewer than 3
-		get_min_on_top(&stack_a, 'a');
-	}
-	//else if (ft_stacksize(stack_a) < 6)
-	//	sort_three_asc(&stack_a, 'a');//TODO for 5 numb
+		sort_three(&stack_a, 'a');
 	else
 		turk_algorithm(&stack_a, &stack_b);
 	ft_stackfree(&stack_a);
