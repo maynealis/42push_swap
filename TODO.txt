@@ -1,4 +1,4 @@
-[ ] Check Makefile for libft and printf
+[x] Check Makefile for libft and printf
 [ ] Check how to include another git as a submodule
 
 [ ] Add a good README

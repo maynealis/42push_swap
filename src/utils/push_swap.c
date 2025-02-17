@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 15:19:55 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/17 12:38:48 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:05:18 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,3 @@ char	print_error_message_and_clean(t_stack **stack_a, t_stack **stack_b)
 	ft_stackfree(stack_b);
 	return (1);
 }
-
-

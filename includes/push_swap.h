@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:04:48 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/17 14:08:58 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:05:31 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ void	get_min_on_top(t_stack **stack, char stack_letter);
 void	sort_three_desc(t_stack **stack, char stack_letter);
 void	sort_three_asc(t_stack **stack, char stack_letter);
 void	sort_three(t_stack **stack, char stack_letter);
-
-
 
 // Algorithm turk
 int		moves_with_r(int n, t_stack *stack);

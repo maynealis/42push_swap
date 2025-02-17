@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_seq	get_min_moves_r_r(t_stack *stack_a, t_stack *stack_b)
+static t_seq	get_min_moves_r_r(t_stack *stack_a, t_stack *stack_b)
 {
 	int		i;
 	int		size_a;
@@ -41,7 +41,7 @@ t_seq	get_min_moves_r_r(t_stack *stack_a, t_stack *stack_b)
 	return (seq);
 }
 
-t_seq	get_min_moves_r_rr(t_stack *stack_a, t_stack *stack_b)
+static t_seq	get_min_moves_r_rr(t_stack *stack_a, t_stack *stack_b)
 {
 	int		i;
 	int		size_a;
@@ -67,7 +67,7 @@ t_seq	get_min_moves_r_rr(t_stack *stack_a, t_stack *stack_b)
 	return (seq);
 }
 
-t_seq	get_min_moves_rr_r(t_stack *stack_a, t_stack *stack_b)
+static t_seq	get_min_moves_rr_r(t_stack *stack_a, t_stack *stack_b)
 {
 	int		i;
 	int		size_a;
@@ -93,7 +93,7 @@ t_seq	get_min_moves_rr_r(t_stack *stack_a, t_stack *stack_b)
 	return (seq);
 }
 
-t_seq	get_min_moves_rr_rr(t_stack *stack_a, t_stack *stack_b)
+static t_seq	get_min_moves_rr_rr(t_stack *stack_a, t_stack *stack_b)
 {
 	int		i;
 	int		size_a;

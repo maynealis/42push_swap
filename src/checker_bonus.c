@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:12:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/17 14:34:20 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:01:46 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	apply_instruction(char *inst, t_stack **stack_a, t_stack **stack_b)
 
 void	checker(t_stack **stack_a, t_stack **stack_b)
 {
-	char *inst;
+	char	*inst;
 
 	inst = get_next_line(0);
 	while (inst)
@@ -68,7 +68,7 @@ void	checker(t_stack **stack_a, t_stack **stack_b)
 
 int	main(int argc, char **argv)
 {
-	int	i;
+	int		i;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 

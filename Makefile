@@ -6,19 +6,23 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 18:26:37 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/02/17 15:21:25 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/02/17 17:30:27 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-INCLUDES_DIR = includes
-LIBFT_DIR = libft
-SRCS_DIR = srcs #TODO ORGANIZAR
-OBJS_DIR = objs
-
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR) -g #TODO: quitar flag para entregar
+
+INCLUDES_DIR = includes
+LIBFT_DIR = libft
+SRCS_DIR = src
+RULES_DIR = $(SRCS_DIR)/rules
+STACK_DIR = $(SRCS_DIR)/stack
+UTILS_DIR = $(SRCS_DIR)/utils
+TURK_DIR = $(SRCS_DIR)/turk_algorithm
+OBJS_DIR = objs
 
 LIBFT = $(LIBFT_DIR)/libft.a
 
@@ -26,14 +30,30 @@ INCLUDES = $(INCLUDES_DIR)/libft.h \
 			$(INCLUDES_DIR)/ft_printf_bonus.h \
 			$(INCLUDES_DIR)/get_next_line.h \
 			$(INCLUDES_DIR)/push_swap.h \
-			$(INCLUDES_DIR)/stack.h
+			$(INCLUDES_DIR)/stack.h \
+			$(INCLUDES_DIR)/checker_bonus.h
 
-SRCS = stack_manager.c stack_push_pop.c stack_min_max.c stack_check_sorted.c \
-		rule_push.c rule_swap.c rule_rotate.c rule_reverse_rotate.c \
-		parse_arguments.c push_swap.c sort.c \
-		calculate_moves.c best_move.c sequence_manager.c turk_algorithm.c \
-		radix_algorithm.c
-OBJS = $(SRCS:.c=.o)
+STACK_SRCS = $(STACK_DIR)/stack_manager.c \
+			$(STACK_DIR)/stack_push_pop.c \
+			$(STACK_DIR)/stack_min_max.c \
+			$(STACK_DIR)/stack_check_sorted.c \
+			$(STACK_DIR)/stack_sort.c
+
+RULES_SRCS = $(RULES_DIR)/rule_push.c \
+			$(RULES_DIR)/rule_swap.c \
+			$(RULES_DIR)/rule_rotate.c \
+			$(RULES_DIR)/rule_reverse_rotate.c
+
+UTILS_SRCS = $(UTILS_DIR)/parse_arguments.c \
+			$(UTILS_DIR)/push_swap.c \
+			$(UTILS_DIR)/sequence_manager.c
+
+TURK_SRCS = $(TURK_DIR)/calculate_moves.c \
+			$(TURK_DIR)/best_move.c \
+			$(TURK_DIR)/turk_algorithm.c
+
+SRCS = main.c $(STACK_SRCS) $(RULES_SRCS) $(UTILS_SRCS) $(TURK_SRCS)
+OBJS = $(SRCS:.c=.o) #TODO en la carpeta que toca
 
 SRCS_BONUS = checker_bonus.c 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
