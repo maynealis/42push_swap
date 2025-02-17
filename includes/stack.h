@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 18:39:31 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/12 10:43:37 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:26:42 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ int		get_min_num(t_stack *stack);
 int		get_pos_max_num(t_stack *stack);
 int		get_pos_min_num(t_stack *stack);
 
-// Check if is sorted
-char	is_reverse_sorted(t_stack *stack);
-char	is_sorted(t_stack *stack);
+// To check if the circular stack is sorted
+char	is_strictly_sorted(t_stack *stack);
+char	is_circular_sorted_descending(t_stack *stack);
+char	is_circular_sorted_ascending(t_stack *stack);
+//char	is_reverse_sorted(t_stack *stack);
+//char	is_sorted(t_stack *stack);
 
 #endif

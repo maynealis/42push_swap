@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:27:32 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/12 11:30:05 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:07:01 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 void	rotate(t_stack **stack)
 {
 	*stack = (*stack)->next;
+}
+
+void	rotate_both(t_stack **stack_a, t_stack **stack_b)
+{
+	rotate(stack_a);
+	rotate(stack_b);
 }
 
 void	rotate_print(t_stack **stack, char letter)

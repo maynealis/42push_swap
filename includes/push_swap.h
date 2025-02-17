@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:04:48 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/17 11:32:36 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:08:58 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void	reverse_rotate_print(t_stack **stack, char letter);
 void	swap_print(t_stack **stack, char letter);
 void	rotate_both_print(t_stack **stack_a, t_stack **stack_b);
 void	reverse_rotate_both_print(t_stack **stack_a, t_stack **stack_b);
+void	rotate_both(t_stack **stack_a, t_stack **stack_b);
+void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
+void	swap_both(t_stack **stack_a, t_stack **stack_b);
 
 // Algorithm basics
 
