@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:12:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/17 17:01:46 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:51:09 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "stack.h"
 #include "ft_printf_bonus.h"
 #include "get_next_line.h"
-#include "checker.h"
+#include "checker_bonus.h"
 
 void	apply_instruction(char *inst, t_stack **stack_a, t_stack **stack_b)
 {

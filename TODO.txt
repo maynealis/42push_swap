@@ -1,7 +1,11 @@
 [x] Check Makefile for libft and printf
+[ ] Makefile no relink i lo del FORCE
+[ ] Checkejar el fsanitize=address -g al compilar
+
 [ ] Check how to include another git as a submodule
 
-[ ] Add a good README
+[-] Add a good README
 [ ] Add the other algorithms: radix and quick sort
 [ ] Read about exit.
 [ ] Normalizar el stack para radix
+
