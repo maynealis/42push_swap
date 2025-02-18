@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 18:26:37 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/02/17 20:04:10 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/02/18 15:34:48 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,8 @@ CHECKER		=	checker
 
 # Compiler and flags
 CC			=	cc
-CFLAGS		=	-Wall -Werror -Wextra -I$(INC_DIR)
-DEBUG		=	-fsanitize=address -g  #TODO: check this!! and also check MMD Y MT pels fitxers .d?
-#ifdef DEBUG
-#    CFLAGS	+=	-g -fsanitize=address
-#endif
+CFLAGS		=	-Wall -Werror -Wextra -I$(INC_DIR) -MMD -MP
+DEBUG		=	-fsanitize=address -g
 
 # Directories
 INC_DIR		=	includes
@@ -39,7 +36,6 @@ OBJ_DIRS	=	$(OBJ_DIR) \
 				$(OBJ_DIR)/utils \
 				$(OBJ_DIR)/turk_algorithm
 
-# TODO Headers
 INCLUDES	=	$(INC_DIR)/libft.h \
 				$(INC_DIR)/ft_printf_bonus.h \
 				$(INC_DIR)/get_next_line.h \
@@ -70,7 +66,8 @@ CHECKER_OBJ	=	$(addprefix $(OBJ_DIR)/, $(CHECKER_SRC:.c=.o))
 
 # All objects combined
 OBJS		=	$(STACK_OBJ) $(RULES_OBJ) $(UTILS_OBJ) $(TURK_OBJ)
-OBJS_ALL	=	$(STACK_OBJ) $(RULES_OBJ) $(UTILS_OBJ) $(TURK_OBJ) $(MAIN_OBJ)
+OBJS_PS		=	$(STACK_OBJ) $(RULES_OBJ) $(UTILS_OBJ) $(TURK_OBJ) $(MAIN_OBJ)
+OBJS_ALL	=	$(STACK_OBJ) $(RULES_OBJ) $(UTILS_OBJ) $(TURK_OBJ) $(MAIN_OBJ) $(CHECKER_OBJ)
 
 # Library
 LIBFT		=	$(LIBFT_DIR)/libft.a
@@ -91,13 +88,13 @@ $(OBJ_DIRS):
 	@echo "$(GREEN)Created directory: $@$(RESET)"
 
 # Compile source files #TODO: flg pels includes MMD -MT??/
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES) | $(OBJ_DIRS)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile | $(OBJ_DIRS)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(GREEN)Compiled: $<$(RESET)"
 
 # Build main executable
-$(NAME): $(OBJS_ALL) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS_ALL) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJS_PS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS_PS) $(LIBFT) -o $(NAME)
 	@echo "$(GREEN)Built: $(NAME)$(RESET)"
 
 # Build checker
@@ -105,10 +102,12 @@ $(CHECKER): $(OBJS) $(CHECKER_OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS) $(CHECKER_OBJ) $(LIBFT) -o $(CHECKER)
 	@echo "$(GREEN)Built: $(CHECKER)$(RESET)"
 
+FORCE:
+
 # Build libft
-$(LIBFT):
+$(LIBFT): FORCE
 	@make -C $(LIBFT_DIR)
-	@echo "$(GREEN)Built: libft$(RESET)"
+#@echo "$(GREEN)Built: libft$(RESET)"
 
 # Clean targets
 clean:
@@ -133,7 +132,8 @@ debug_bonus: re bonus
 norm:
 	norminette $(SRC_DIR) $(INC_DIR) $(LIBFT_DIR)
 
-.PHONY: all bonus clean fclean re debug debug_bonus norm
+.PHONY: all bonus clean fclean re debug debug_bonus norm FORCE
 
 # Dependencies
--include $(OBJS:.o=.d)
+-include $(OBJS_ALL:.o=.d)
+

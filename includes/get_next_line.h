@@ -18,8 +18,10 @@
 # include <stddef.h> // size_t
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 8
+#  define BUFFER_SIZE 1024
 # endif
+
+# define FT_MAX_OPEN_FILES 1024
 
 size_t	gnl_strlen(char *s);
 char	*gnl_strdup(char *s);
