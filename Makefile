@@ -29,7 +29,7 @@ TURK_DIR	=	$(SRC_DIR)/turk_algorithm
 LIBFT_DIR	=	libft
 OBJ_DIR		=	obj
 
-# Create obj subdirectories #TODO: CHECK IF THIS IS A GOOD PRACTIE. I AM NOT USING THIS RIGHT NOW!!!!
+# Create obj subdirectories
 OBJ_DIRS	=	$(OBJ_DIR) \
 				$(OBJ_DIR)/stack \
 				$(OBJ_DIR)/rules \
