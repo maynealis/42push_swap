@@ -13,9 +13,43 @@
 #include "libft.h"
 #include "push_swap.h"
 
+// //TODO to test
+// #include <stdio.h>
+// void	print_stacks(t_stack *a, t_stack *b)
+// {
+// 	int	size_a;
+// 	int	size_b;
+// 	int	i;
+
+// 	size_a = ft_stacksize(a);
+// 	size_b = ft_stacksize(b);
+// 	printf("------ a ------\t------ b ------\n");
+// 	i = 0;
+// 	while (i < size_a || i < size_b)
+// 	{
+// 		if (i < size_a)
+// 		{
+// 			//print_binary(a->number, 7);
+// 			printf("(%i)% 11i",a->index, a->num);
+// 			a = a->next;
+// 		}
+// 		else
+// 			printf("           "); //TODO
+// 		printf("\t");
+// 		if (i < size_b)
+// 		{
+// 			//print_binary(a->number, 7);
+// 			printf("(%i)% 11i", b->index, b->num);
+// 			b = b->next;
+// 		}
+// 		printf("\n");
+// 		i++;
+// 	}
+// 	printf("--------------------------------\n");
+// }
+
 int	main(int argc, char **argv)
 {
-	int		i;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
@@ -23,20 +57,14 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc < 2)
 		return (0);
-	i = 1;
-	while (i < argc)
-	{
-		if (!is_valid_argument(argv[i], stack_a))
-			return (print_error_message_and_clean(&stack_a, &stack_b));
-		if (!add_number(&stack_a, ft_atoi(argv[i])))
-			return (print_error_message_and_clean(&stack_a, &stack_b));
-		i++;
-	}
+	fill_stack(argc, argv, &stack_a, &stack_b);
 	if (ft_stacksize(stack_a) <= 3)
 		sort_three(&stack_a, 'a');
-	else
+	else if (ALGORITHM == RADIX)
+		radix_sort(&stack_a, &stack_b);
+	else if (ALGORITHM == TURK)
 		turk_algorithm(&stack_a, &stack_b);
 	ft_stackfree(&stack_a);
 	ft_stackfree(&stack_b);
-	return (0);
+	exit(EXIT_SUCCESS);
 }

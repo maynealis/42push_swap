@@ -10,11 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "libft.h"
-#include "stack.h"
-#include "ft_printf_bonus.h"
-#include "get_next_line.h"
 #include "checker_bonus.h"
 
 void	apply_instruction(char *inst, t_stack **stack_a, t_stack **stack_b)
@@ -68,7 +63,6 @@ void	checker(t_stack **stack_a, t_stack **stack_b)
 
 int	main(int argc, char **argv)
 {
-	int		i;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
@@ -76,15 +70,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc < 2)
 		return (0);
-	i = 1;
-	while (i < argc)
-	{
-		if (!is_valid_argument(argv[i], stack_a))
-			return (print_error_message_and_clean(&stack_a, &stack_b));
-		if (!add_number(&stack_a, ft_atoi(argv[i])))
-			return (print_error_message_and_clean(&stack_a, &stack_b));
-		i++;
-	}
+	fill_stack(argc, argv, &stack_a, &stack_b);
 	checker(&stack_a, &stack_b);
 	ft_stackfree(&stack_a);
 	ft_stackfree(&stack_b);

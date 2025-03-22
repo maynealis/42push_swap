@@ -13,9 +13,22 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdlib.h> //for malloc
+# include <stdlib.h>
 # include "stack.h"
 
+// Algorithms
+typedef enum e_algorithm
+{
+	RADIX = 0,
+	TURK = 1
+}	t_algorithm;
+
+// Define main algorithm
+# ifndef ALGORITHM
+#  define ALGORITHM TURK
+# endif
+
+// STRUCT SEQUENCE
 typedef struct s_seq
 {
 	int	moves;
@@ -32,10 +45,10 @@ typedef struct s_seq
 	int	ss;
 }	t_seq;
 
-// Functions to parse the arguments
+// Parse the arguments and fill the stack
 char	is_valid_argument(char *arg, t_stack *a);
-char	add_number(t_stack **a, int n);
-char	print_error_message_and_clean(t_stack **stack_a, t_stack **stack_b);
+void	fill_stack(int argc, char **args, t_stack **stack_a, t_stack **stack_b);
+void	print_error_message_and_clean(t_stack **stack_a, t_stack **stack_b);
 
 // Rules
 void	push(t_stack **src, t_stack **dst);
@@ -53,26 +66,26 @@ void	rotate_both(t_stack **stack_a, t_stack **stack_b);
 void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
 void	swap_both(t_stack **stack_a, t_stack **stack_b);
 
-// Algorithm basics
-
+// Sort
 void	get_max_on_top(t_stack **stack, char stack_letter);
 void	get_min_on_top(t_stack **stack, char stack_letter);
-
 void	sort_three_desc(t_stack **stack, char stack_letter);
 void	sort_three_asc(t_stack **stack, char stack_letter);
 void	sort_three(t_stack **stack, char stack_letter);
 
-// Algorithm turk
+// Algorithm turk - calculate best move
 int		moves_with_r(int n, t_stack *stack);
 int		moves_with_rr(int n, t_stack *stack);
-
 t_seq	get_best_move(t_stack *stack_a, t_stack *stack_b);
+void	turk_algorithm(t_stack **stack_a, t_stack **stack_b);
+
+// Sequence manager
 t_seq	init_seq(void);
 t_seq	opt_seq(t_seq seq);
 void	apply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move);
-void	turk_algorithm(t_stack **stack_a, t_stack **stack_b);
 
 // Radix
+//int		get_max_index(t_stack *stack);
 void	radix_sort(t_stack **a, t_stack **b);
 
 #endif

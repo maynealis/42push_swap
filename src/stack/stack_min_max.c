@@ -99,3 +99,21 @@ int	get_pos_min_num(t_stack *stack)
 	}
 	return (pos);
 }
+
+int	get_max_index(t_stack *stack)
+{
+	t_stack	*first;
+	int		max;
+
+	first = stack;
+	max = first->index;
+	while (stack)
+	{
+		stack = stack->next;
+		if (stack == first)
+			break ;
+		if (stack->index > max)
+			max = stack->index;
+	}
+	return (max);
+}

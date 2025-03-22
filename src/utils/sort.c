@@ -69,3 +69,9 @@ void	get_min_on_top(t_stack **stack, char stack_letter)
 			reverse_rotate_print(stack, stack_letter);
 	}
 }
+
+void	sort_three(t_stack **stack, char letter)
+{
+	sort_three_asc(stack, letter);
+	get_min_on_top(stack, letter);
+}
