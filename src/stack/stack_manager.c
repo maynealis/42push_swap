@@ -39,6 +39,7 @@ t_stack	*ft_stacknew(int number)
 	if (new == NULL)
 		return (NULL);
 	new->num = number;
+	new->index = -1;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

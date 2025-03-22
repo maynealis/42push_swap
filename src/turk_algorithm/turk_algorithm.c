@@ -41,9 +41,3 @@ void	turk_algorithm(t_stack **stack_a, t_stack **stack_b)
 	}
 	get_min_on_top(stack_a, 'a');
 }
-
-void	sort_three(t_stack **stack, char letter)
-{
-	sort_three_asc(stack, letter);
-	get_min_on_top(stack, letter);
-}

@@ -13,6 +13,11 @@
 #ifndef CHECKER_BONUS_H
 # define CHECKER_BONUS_H
 
+# include "push_swap.h"
+# include "libft.h"
+# include "ft_printf_bonus.h"
+# include "get_next_line.h"
+
 # define INSTRUCTIONS "sa\nsb\nss\npa\npb\nra\nrb\nrr\nrra\nrrb\nrrr\n"
 
 #endif

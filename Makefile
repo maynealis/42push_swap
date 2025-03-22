@@ -34,7 +34,8 @@ OBJ_DIRS	=	$(OBJ_DIR) \
 				$(OBJ_DIR)/stack \
 				$(OBJ_DIR)/rules \
 				$(OBJ_DIR)/utils \
-				$(OBJ_DIR)/turk_algorithm
+				$(OBJ_DIR)/turk_algorithm \
+				$(OBJ_DIR)/radix_sort_algorithm
 
 INCLUDES	=	$(INC_DIR)/libft.h \
 				$(INC_DIR)/ft_printf_bonus.h \
@@ -45,13 +46,15 @@ INCLUDES	=	$(INC_DIR)/libft.h \
 
 # Source files
 STACK_SRC	=	stack_manager.c stack_push_pop.c stack_min_max.c \
-				stack_check_sorted.c stack_sort.c
+				stack_check_sorted.c
 
 RULES_SRC	=	rule_push.c rule_swap.c rule_rotate.c rule_reverse_rotate.c
 
-UTILS_SRC	=	parse_arguments.c sequence_manager.c push_swap.c
+UTILS_SRC	=	parse_arguments.c sequence_manager.c fill_stack.c sort.c #push_swap.c #FIXME
 
 TURK_SRC	=	calculate_moves.c best_move.c turk_algorithm.c
+
+RADIX_SRC	=	radix_algorithm.c
 
 MAIN_SRC	=	main.c
 CHECKER_SRC	=	checker_bonus.c
@@ -61,13 +64,16 @@ STACK_OBJ	=	$(addprefix $(OBJ_DIR)/stack/, $(STACK_SRC:.c=.o))
 RULES_OBJ	=	$(addprefix $(OBJ_DIR)/rules/, $(RULES_SRC:.c=.o))
 UTILS_OBJ	=	$(addprefix $(OBJ_DIR)/utils/, $(UTILS_SRC:.c=.o))
 TURK_OBJ	=	$(addprefix $(OBJ_DIR)/turk_algorithm/, $(TURK_SRC:.c=.o))
+RADIX_OBJ	=	$(addprefix $(OBJ_DIR)/radix_sort_algorithm/, $(RADIX_SRC:.c=.o))
 MAIN_OBJ	=	$(addprefix $(OBJ_DIR)/, $(MAIN_SRC:.c=.o))
 CHECKER_OBJ	=	$(addprefix $(OBJ_DIR)/, $(CHECKER_SRC:.c=.o))
 
 # All objects combined
-OBJS		=	$(STACK_OBJ) $(RULES_OBJ) $(UTILS_OBJ) $(TURK_OBJ)
-OBJS_PS		=	$(STACK_OBJ) $(RULES_OBJ) $(UTILS_OBJ) $(TURK_OBJ) $(MAIN_OBJ)
-OBJS_ALL	=	$(STACK_OBJ) $(RULES_OBJ) $(UTILS_OBJ) $(TURK_OBJ) $(MAIN_OBJ) $(CHECKER_OBJ)
+OBJS		=	$(STACK_OBJ) $(RULES_OBJ) $(UTILS_OBJ)
+OBJS_TURK	=	$(OBJS) $(TURK_OBJ) $(MAIN_OBJ)
+OBJS_RADIX	=	$(OBJS) $(RADIX_OBJ) $(MAIN_OBJ)
+OBJS_PS		=	$(OBJS_TURK)
+OBJS_ALL	=	$(STACK_OBJ) $(RULES_OBJ) $(UTILS_OBJ) $(TURK_OBJ) $(RADIX_OBJ) $(MAIN_OBJ) $(CHECKER_OBJ)
 
 # Library
 LIBFT		=	$(LIBFT_DIR)/libft.a
@@ -96,6 +102,17 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile | $(OBJ_DIRS)
 $(NAME): $(OBJS_PS) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS_PS) $(LIBFT) -o $(NAME)
 	@echo "$(GREEN)Built: $(NAME)$(RESET)"
+
+#radix: ALGORITHM_FLAG = -D ALGORITHM=0 #FIXME lo de la flag
+radix: CFLAGS += -D ALGORITHM=RADIX
+radix: touch_main $(OBJS_RADIX) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS_RADIX) $(LIBFT) -o $(NAME)
+	@echo "$(GREEN)Built (with radix): $(NAME)$(RESET)"
+
+turk: touch_main re
+
+touch_main:
+	@touch $(SRC_DIR)/main.c
 
 # Build checker
 $(CHECKER): $(OBJS) $(CHECKER_OBJ) $(LIBFT)
@@ -132,7 +149,7 @@ debug_bonus: re bonus
 norm:
 	norminette $(SRC_DIR) $(INC_DIR) $(LIBFT_DIR)
 
-.PHONY: all bonus clean fclean re debug debug_bonus norm FORCE
+.PHONY: all bonus clean fclean re debug debug_bonus norm FORCE radix touch_main
 
 # Dependencies
 -include $(OBJS_ALL:.o=.d)

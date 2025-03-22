@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "stack.h"
 
 int	moves_with_r(int n, t_stack *stack)
 {
