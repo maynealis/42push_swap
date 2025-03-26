@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:04:48 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/17 17:05:31 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/03/26 13:06:44 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_seq
 char	is_valid_argument(char *arg, t_stack *a);
 void	fill_stack(int argc, char **args, t_stack **stack_a, t_stack **stack_b);
 void	print_error_message_and_clean(t_stack **stack_a, t_stack **stack_b);
+void	print_stacks(t_stack *a, t_stack *b);
 
 // Rules
 void	push(t_stack **src, t_stack **dst);
@@ -85,7 +86,6 @@ t_seq	opt_seq(t_seq seq);
 void	apply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move);
 
 // Radix
-//int		get_max_index(t_stack *stack);
 void	radix_sort(t_stack **a, t_stack **b);
 
 #endif

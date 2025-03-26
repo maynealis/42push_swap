@@ -13,41 +13,6 @@
 #include "libft.h"
 #include "push_swap.h"
 
-// //TODO to test
-// #include <stdio.h>
-// void	print_stacks(t_stack *a, t_stack *b)
-// {
-// 	int	size_a;
-// 	int	size_b;
-// 	int	i;
-
-// 	size_a = ft_stacksize(a);
-// 	size_b = ft_stacksize(b);
-// 	printf("------ a ------\t------ b ------\n");
-// 	i = 0;
-// 	while (i < size_a || i < size_b)
-// 	{
-// 		if (i < size_a)
-// 		{
-// 			//print_binary(a->number, 7);
-// 			printf("(%i)% 11i",a->index, a->num);
-// 			a = a->next;
-// 		}
-// 		else
-// 			printf("           "); //TODO
-// 		printf("\t");
-// 		if (i < size_b)
-// 		{
-// 			//print_binary(a->number, 7);
-// 			printf("(%i)% 11i", b->index, b->num);
-// 			b = b->next;
-// 		}
-// 		printf("\n");
-// 		i++;
-// 	}
-// 	printf("--------------------------------\n");
-// }
-
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
