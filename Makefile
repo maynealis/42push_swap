@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 18:26:37 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/02/18 15:34:48 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/03/26 13:13:09 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ STACK_DIR	=	$(SRC_DIR)/stack
 RULES_DIR	=	$(SRC_DIR)/rules
 UTILS_DIR	=	$(SRC_DIR)/utils
 TURK_DIR	=	$(SRC_DIR)/turk_algorithm
-LIBFT_DIR	=	libft
+LIBFT_DIR	=	libftprintf
 OBJ_DIR		=	obj
 
 # Create obj subdirectories
@@ -50,7 +50,7 @@ STACK_SRC	=	stack_manager.c stack_push_pop.c stack_min_max.c \
 
 RULES_SRC	=	rule_push.c rule_swap.c rule_rotate.c rule_reverse_rotate.c
 
-UTILS_SRC	=	parse_arguments.c sequence_manager.c fill_stack.c sort.c #push_swap.c #FIXME
+UTILS_SRC	=	parse_arguments.c sequence_manager.c fill_stack.c sort.c print_stacks.c
 
 TURK_SRC	=	calculate_moves.c best_move.c turk_algorithm.c
 
@@ -76,7 +76,7 @@ OBJS_PS		=	$(OBJS_TURK)
 OBJS_ALL	=	$(STACK_OBJ) $(RULES_OBJ) $(UTILS_OBJ) $(TURK_OBJ) $(RADIX_OBJ) $(MAIN_OBJ) $(CHECKER_OBJ)
 
 # Library
-LIBFT		=	$(LIBFT_DIR)/libft.a
+LIBFT		=	$(LIBFT_DIR)/libftprintf.a
 
 # Colors for output
 GREEN		=	\033[0;32m
@@ -93,7 +93,7 @@ $(OBJ_DIRS):
 	@mkdir -p $@
 	@echo "$(GREEN)Created directory: $@$(RESET)"
 
-# Compile source files #TODO: flg pels includes MMD -MT??/
+# Compile source files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile | $(OBJ_DIRS)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(GREEN)Compiled: $<$(RESET)"
@@ -103,7 +103,6 @@ $(NAME): $(OBJS_PS) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS_PS) $(LIBFT) -o $(NAME)
 	@echo "$(GREEN)Built: $(NAME)$(RESET)"
 
-#radix: ALGORITHM_FLAG = -D ALGORITHM=0 #FIXME lo de la flag
 radix: CFLAGS += -D ALGORITHM=RADIX
 radix: touch_main $(OBJS_RADIX) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJS_RADIX) $(LIBFT) -o $(NAME)
