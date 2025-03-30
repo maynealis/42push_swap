@@ -23,6 +23,11 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	fill_stack(argc, argv, &stack_a, &stack_b);
+	if (is_strictly_sorted(stack_a))
+	{
+		ft_stackfree(&stack_a);
+		return (0);
+	}
 	if (ft_stacksize(stack_a) <= 3)
 		sort_three(&stack_a, 'a');
 	else if (ALGORITHM == RADIX)
@@ -31,5 +36,5 @@ int	main(int argc, char **argv)
 		turk_algorithm(&stack_a, &stack_b);
 	ft_stackfree(&stack_a);
 	ft_stackfree(&stack_b);
-	exit(EXIT_SUCCESS);
+	return (0);
 }
