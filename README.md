@@ -1,17 +1,17 @@
-# PUSH_SWAP
+# Push Swap
 
 The Push Swap project is about creating a sorting algorithm using two stacks (A and B) and a limited set of operations. The goal is to sort a randomly ordered stack of integers in ascending order with the minimum number of operations.
 
 **Table of contents**
 - [Features](#-Features)
-- [Building and Usage](#-Building-and-usage)
+- [Building and Usage](#-Building-and-Usage)
 - [Implementation Details](#-Implementation-Details)
-	- [Data Structures](#-Dara-Structures)
+	- [Data Structures](#-Data-Structures)
 	- [Allowed Operations](#-Allowed-operations)
 	- [Algorithms](#-Algorithms)
-	- [Project structure](#-Project-structure)
+	- [Project structure](#-Project-Structure)
 	- [Flowchart](#-Flowchart)
-- [References](#-Referennces)
+- [References](#-References)
 
 
 ## 🚀 Features
@@ -248,4 +248,7 @@ flowchart TD
 **Usefull resources**
 - [Generator random numbers](https://numbergenerator.org/randomnumbergenerator#!numbers=500&low=-2147483648&high=2147483647&unique=true&csv=&oddeven=&oddqty=0&sorted=false&addfilters=)
 - [Push swap visualizer](https://push-swap42-visualizer.vercel.app/)
+
+
+[Back to TOP](#Push-Swap)
 
